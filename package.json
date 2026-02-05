@@ -11,8 +11,14 @@
     "cli/",
     "templates/",
     "scripts/",
-    "worker/",
-    "README.md"
+    "worker/src/",
+    "worker/package.json",
+    "worker/tsconfig.json", 
+    "worker/vitest.config.ts",
+    "worker/wrangler.toml",
+    "worker/README.md",
+    "README.md",
+    "CLAUDE.md"
   ],
   "scripts": {
     "test": "cd worker && npm run test",

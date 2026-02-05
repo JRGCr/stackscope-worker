@@ -1,0 +1,11 @@
+# Exclude large development dependencies and build artifacts
+worker/node_modules/
+worker/.wrangler/
+worker/.cache/
+worker/.mf/
+worker/.vite/
+worker/dist/
+*.log
+.DS_Store
+.env*
+!.env.example
