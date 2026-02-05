@@ -1,0 +1,83 @@
+{
+  "name": "stackscope-worker",
+  "version": "1.0.0",
+  "description": "🚀 Deploy your own private Cloudflare Worker logging infrastructure in minutes! CLI tools and templates for StackScope worker deployment with GitHub webhooks, browser log collection, and real-time log streaming.",
+  "main": "bin/stackscope.js",
+  "bin": {
+    "stackscope-worker": "bin/stackscope.js"
+  },
+  "files": [
+    "bin/",
+    "cli/",
+    "templates/",
+    "scripts/",
+    "worker/",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "cd worker && npm run test",
+    "lint": "cd worker && npm run lint",
+    "worker:dev": "cd worker && npm run dev",
+    "worker:deploy": "cd worker && npm run deploy",
+    "worker:deploy:staging": "cd worker && npm run deploy:staging",
+    "worker:deploy:production": "cd worker && npm run deploy:production",
+    "worker:test": "cd worker && npm run test",
+    "worker:lint": "cd worker && npm run lint",
+    "install:worker": "cd worker && npm install",
+    "build": "echo 'No build step required for CLI'",
+    "start": "./scripts/log-collector.sh start",
+    "stop": "./scripts/log-collector.sh stop",
+    "restart": "./scripts/log-collector.sh restart",
+    "status": "./scripts/log-collector.sh status",
+    "logs": "tail -f logs/stackscope.ndjson | jq",
+    "logs:raw": "tail -f logs/stackscope.ndjson",
+    "logs:errors": "grep '\"level\":\"error\"' logs/stackscope.ndjson | jq",
+    "logs:browser": "grep '\"source\":\"browser\"' logs/stackscope.ndjson | jq",
+    "logs:github": "grep '\"source\":\"github\"' logs/stackscope.ndjson | jq",
+    "logs:clear": "echo '' > logs/stackscope.ndjson",
+    "health": "curl -s https://stackscope-worker.blackbaysolutions.workers.dev/health | jq"
+  },
+  "keywords": [
+    "cli",
+    "cloudflare-workers",
+    "logging-infrastructure", 
+    "worker-deployment",
+    "template",
+    "github-webhooks",
+    "log-collection",
+    "observability",
+    "monitoring",
+    "self-hosted",
+    "private-infrastructure",
+    "real-time-logs",
+    "edge-computing",
+    "serverless",
+    "log-streaming"
+  ],
+  "author": "JRGCr",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JRGCr/stackscope-worker.git"
+  },
+  "homepage": "https://github.com/JRGCr/stackscope-worker",
+  "bugs": {
+    "url": "https://github.com/JRGCr/stackscope-worker/issues"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^12.0.0",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^8.2.6"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^8.2.10",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "preferGlobal": true
+}

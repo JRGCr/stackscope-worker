@@ -1,0 +1,31 @@
+name = "stackscope-worker"
+main = "src/index.ts"
+compatibility_date = "2024-02-02"
+
+[env.development]
+vars = { ENVIRONMENT = "development" }
+# Set these in your dashboard or via wrangler secret:
+# GITHUB_WEBHOOK_SECRET = "your-github-webhook-secret"
+
+[env.staging]
+vars = { ENVIRONMENT = "staging" }
+# Set these in your dashboard or via wrangler secret:
+# CORS_ORIGINS = "https://staging.example.com,https://test.example.com"
+# API_KEY = "your-staging-api-key"
+# GITHUB_WEBHOOK_SECRET = "your-github-webhook-secret"
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+# Set these in your dashboard or via wrangler secret:
+# CORS_ORIGINS = "https://app.example.com,https://www.example.com"
+# API_KEY = "your-production-api-key"
+# GITHUB_WEBHOOK_SECRET = "your-github-webhook-secret"
+# RATE_LIMIT_MAX = "100"
+# RATE_LIMIT_WINDOW_MS = "60000"
+
+# Rate limiting configuration (Cloudflare built-in)
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1"
+simple = { limit = 100, period = 60 }
