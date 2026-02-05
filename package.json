@@ -60,7 +60,7 @@
     "type": "git",
     "url": "git+https://github.com/JRGCr/stackscope-worker.git"
   },
-  "homepage": "https://github.com/JRGCr/stackscope-worker",
+  "homepage": "https://github.com/JRGCr/stackscope-worker#readme",
   "bugs": {
     "url": "https://github.com/JRGCr/stackscope-worker/issues"
   },
