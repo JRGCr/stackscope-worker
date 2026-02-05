@@ -1,6 +1,6 @@
 {
   "name": "stackscope-worker",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "🚀 Deploy your own private Cloudflare Worker logging infrastructure in minutes! CLI tools and templates for StackScope worker deployment with GitHub webhooks, browser log collection, and real-time log streaming.",
   "main": "bin/stackscope.js",
   "bin": {

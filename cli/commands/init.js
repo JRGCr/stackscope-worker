@@ -41,7 +41,23 @@ async function initCommand(workerName, options) {
     // Gather configuration
     const config = { workerName };
 
-    if (!options.yes) {
+    // Check if we have command line options for non-interactive mode
+    if (options.accountId && options.githubRepo) {
+      // Non-interactive mode with provided options
+      config.accountId = options.accountId;
+      config.githubRepo = options.githubRepo;
+      config.installDependencies = !options.noInstall;
+      Logger.info('Using provided configuration options');
+    } else if (options.yes) {
+      // Non-interactive mode with placeholder defaults
+      config.accountId = 'your-cloudflare-account-id';
+      config.githubRepo = 'your-github/repository';
+      config.installDependencies = !options.noInstall;
+      Logger.warn('Using placeholder configuration - update wrangler.toml after init');
+      Logger.info('Set your Cloudflare Account ID in wrangler.toml');
+      Logger.info('Configure your GitHub repository in worker configuration');
+    } else {
+      // Interactive mode
       const answers = await inquirer.prompt([
         {
           type: 'input',

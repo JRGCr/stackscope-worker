@@ -9,13 +9,16 @@ const { logsCommand } = require('../cli/commands/logs');
 program
   .name('stackscope-worker')
   .description('StackScope Worker CLI - Deploy your own private logging infrastructure with Cloudflare Workers')
-  .version('1.0.0');
+  .version('1.1.0');
 
 program
   .command('init')
   .description('Initialize a new StackScope worker from template')
   .argument('<worker-name>', 'Name for your worker directory')
   .option('-y, --yes', 'Skip interactive prompts and use defaults')
+  .option('-a, --account-id <id>', 'Cloudflare Account ID')
+  .option('-r, --github-repo <repo>', 'GitHub repository (owner/repo format)')
+  .option('--no-install', 'Skip dependency installation')
   .action(initCommand);
 
 program
